@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shimigui.WebServices.entities.User;
 
 @RestController
-@RequestMapping(value="/user")
+@RequestMapping(value="/users")
 public class UserResource {
 	@GetMapping
 	public ResponseEntity<User> findAll(){
