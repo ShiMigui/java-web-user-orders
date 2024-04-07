@@ -12,11 +12,6 @@ import jakarta.persistence.ManyToOne;
 public class OrderItemPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	public OrderItemPK(Product product, Order order) {
-		this.product = product;
-		this.order = order;
-	}
-
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private Product product;
