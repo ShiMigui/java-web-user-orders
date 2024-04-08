@@ -12,11 +12,16 @@ import com.shimigui.WebServices.repositories.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository repository;
-	
-	public List<User> findAll(){
+
+	public List<User> findAll() {
 		return repository.findAll();
 	}
+
 	public User findById(Integer id) {
 		return repository.findById(id).get();
+	}
+
+	public User insert(User obj) {
+		return repository.save(obj);
 	}
 }
