@@ -29,6 +29,10 @@ public class OrderItem implements Serializable {
 		setQuantity(quantity);
 		setPrice(price);
 	}
+	
+	public Double getTotal() {
+		return quantity * price;
+	}
 
 	public Integer getQuantity() {
 		return quantity;

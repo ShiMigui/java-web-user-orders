@@ -55,6 +55,10 @@ public class Order implements Serializable {
 		setClient(client);
 	}
 
+	public Double getTotal() {
+		return items.stream().map(i -> i.getTotal()).reduce(0.0, (d, D)-> d + D);
+	}
+
 	public Integer getId() {
 		return id;
 	}
