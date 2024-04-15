@@ -11,6 +11,8 @@ import com.shimigui.WebServices.repositories.UserRepository;
 import com.shimigui.WebServices.services.exceptions.DatabaseException;
 import com.shimigui.WebServices.services.exceptions.NotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class UserService {
 	@Autowired
@@ -39,9 +41,15 @@ public class UserService {
 	}
 
 	public User update(Integer id, User obj) {
-		User entity = repository.getReferenceById(id);
-		updateData(entity, obj);
-		return repository.save(entity);
+		if (!repository.existsById(id))
+			throw new NotFoundException(id);
+		try {
+			User entity = repository.getReferenceById(id);
+			updateData(entity, obj);
+			return repository.save(entity);
+		} catch(EntityNotFoundException e) {
+			throw new NotFoundException(id);
+		}
 	}
 
 	private void updateData(User entity, User obj) {
