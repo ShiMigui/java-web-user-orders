@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.shimigui.WebServices.entities.User;
 import com.shimigui.WebServices.repositories.UserRepository;
+import com.shimigui.WebServices.services.exceptions.NotFoundException;
 
 @Service
 public class UserService {
@@ -18,7 +19,7 @@ public class UserService {
 	}
 
 	public User findById(Integer id) {
-		return repository.findById(id).get();
+		return repository.findById(id).orElseThrow(() -> new NotFoundException(id));
 	}
 
 	public User insert(User obj) {
