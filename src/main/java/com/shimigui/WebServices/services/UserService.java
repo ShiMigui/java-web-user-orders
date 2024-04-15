@@ -3,10 +3,12 @@ package com.shimigui.WebServices.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.shimigui.WebServices.entities.User;
 import com.shimigui.WebServices.repositories.UserRepository;
+import com.shimigui.WebServices.services.exceptions.DatabaseException;
 import com.shimigui.WebServices.services.exceptions.NotFoundException;
 
 @Service
@@ -25,11 +27,17 @@ public class UserService {
 	public User insert(User obj) {
 		return repository.save(obj);
 	}
-	
+
 	public void delete(Integer id) {
-		repository.deleteById(id);
+		if (!repository.existsById(id))
+			throw new NotFoundException(id);
+		try {
+			repository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException(e.getMessage());
+		}
 	}
-	
+
 	public User update(Integer id, User obj) {
 		User entity = repository.getReferenceById(id);
 		updateData(entity, obj);

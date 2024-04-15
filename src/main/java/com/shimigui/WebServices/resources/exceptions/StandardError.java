@@ -23,7 +23,7 @@ public class StandardError implements Serializable {
 	public StandardError(Instant timestamp, HttpStatus status, String error, String message, String path) {
 		setTimestamp(timestamp);
 		setMessage(message);
-		setStatus(status.value());
+		setStatus(status);
 		setError(error);
 		setPath(path);
 	}
@@ -40,8 +40,8 @@ public class StandardError implements Serializable {
 		return status;
 	}
 
-	public void setStatus(Integer status) {
-		this.status = status;
+	public void setStatus(HttpStatus status) {
+		this.status = status.value();
 	}
 
 	public String getError() {
