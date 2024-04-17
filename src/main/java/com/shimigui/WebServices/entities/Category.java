@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_category")
-public class Category extends BaseEntity<Category>{
+public class Category extends BaseEntity<Category> {
 	private static final long serialVersionUID = 1L;
 
 	private String name;

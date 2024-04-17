@@ -19,7 +19,7 @@ public class OrderItem implements Serializable {
 	private OrderItemPK id = new OrderItemPK();
 	private Integer quantity;
 	private Double price;
-	
+
 	public OrderItem() {
 	}
 
@@ -29,7 +29,7 @@ public class OrderItem implements Serializable {
 		setQuantity(quantity);
 		setPrice(price);
 	}
-	
+
 	public Double getTotal() {
 		return quantity * price;
 	}

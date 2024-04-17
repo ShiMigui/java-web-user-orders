@@ -11,7 +11,7 @@ import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
 public class BaseEntity<G extends BaseEntity<G>> implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
