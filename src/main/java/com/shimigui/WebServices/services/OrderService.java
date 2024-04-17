@@ -1,7 +1,5 @@
 package com.shimigui.WebServices.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,14 +7,13 @@ import com.shimigui.WebServices.entities.Order;
 import com.shimigui.WebServices.repositories.OrderRepository;
 
 @Service
-public class OrderService {
-	@Autowired
-	private OrderRepository repository;
-	
-	public List<Order> findAll(){
-		return repository.findAll();
+public class OrderService extends EntityService<Order> {
+	public OrderService(@Autowired OrderRepository repository) {
+		super(repository);
 	}
-	public Order findById(Integer id) {
-		return repository.findById(id).get();
+
+	@Override
+	protected void updateData(Order entity, Order obj) {
+
 	}
 }

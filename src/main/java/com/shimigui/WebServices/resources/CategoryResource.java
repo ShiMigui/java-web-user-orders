@@ -20,9 +20,7 @@ public class CategoryResource {
 
 	@GetMapping
 	public ResponseEntity<List<Category>> findAll() {
-		List<Category> users = service.findAll();
-
-		return ResponseEntity.ok().body(users);
+		return ResponseEntity.ok().body(service.findAll());
 	}
 
 	@GetMapping(value = "/{id}")

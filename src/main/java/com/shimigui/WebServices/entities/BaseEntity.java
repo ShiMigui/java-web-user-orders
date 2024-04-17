@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BaseEntity<G extends BaseEntity<G>> implements Serializable {
+public abstract class BaseEntity<G extends BaseEntity<G>> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
