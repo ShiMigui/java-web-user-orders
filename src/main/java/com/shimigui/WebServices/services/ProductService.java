@@ -14,6 +14,20 @@ public class ProductService extends EntityService<Product> {
 
 	@Override
 	protected void updateData(Product entity, Product obj) {
+		String name = obj.getName();
+		Double price = obj.getPrice();
+		String imageUrl = obj.getImageUrl();
+		String description = obj.getDescription();
 
+		obj.getCategories().forEach(entity::addCategory);
+
+		if (description != null)
+			entity.setDescription(description);
+		if(imageUrl!=null) 
+			entity.setImageUrl(imageUrl);
+		if (price != null)
+			entity.setPrice(price);
+		if (name != null)
+			entity.setName(name);
 	}
 }

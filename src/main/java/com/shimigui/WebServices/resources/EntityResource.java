@@ -36,7 +36,6 @@ public class EntityResource<E extends BaseEntity<E>> {
 	public ResponseEntity<E> insert(@RequestBody E obj) {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-
 		return ResponseEntity.created(uri).body(obj);
 	}
 

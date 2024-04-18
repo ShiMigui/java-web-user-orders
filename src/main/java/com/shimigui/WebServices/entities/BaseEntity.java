@@ -3,10 +3,10 @@ package com.shimigui.WebServices.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class BaseEntity<G extends BaseEntity<G>> implements Serializable {
